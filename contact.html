@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Shaansun Technologies</title>
+  <meta name="description" content="Contact Shaansun Technologies — enquiries, workshops and support." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="theme-dark">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.svg" alt="logo" class="logo"> <span class="brand-name">Shaansun Technologies</span>
+      </a>
+      <button id="nav-toggle-7" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <nav class="nav" id="main-nav-7">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.html">Products</a>
+        <a href="solutions.html">Solutions</a>
+        <a href="courses.html">Course</a>
+        <a href="success.html">Success Stories</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container contact-page">
+    <section class="page-hero">
+      <h1>Contact Us</h1>
+      <p class="lead">Discuss a project, request a workshop or enquire about products — we'd love to hear from you.</p>
+    </section>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Head Office</h3>
+        <p>Shaansun Technologies<br>#237, 8th Cross Road, Opp. Vijaya Bank<br>Yelahanka New Town, Bangalore — 560064</p>
+        <p>Email: <a href="mailto:info@shaansun.com">info@shaansun.com</a></p>
+
+        <h4>Quick Links</h4>
+        <nav class="contact-links">
+          <a href="courses.html">Courses</a>
+          <a href="solutions.html">Solutions</a>
+          <a href="success.html">Success Stories</a>
+        </nav>
+      </div>
+
+      <div class="card">
+        <h3>Send Us a Message</h3>
+
+        <!-- Formspree (recommended for GitHub Pages). Replace your_form_id_here -->
+        <form id="contact-form" class="contact-form" method="POST" action="https://formspree.io/f/your_form_id_here">
+          <label>
+            Name
+            <input name="name" type="text" required />
+          </label>
+
+          <label>
+            Email
+            <input name="email" type="email" required />
+          </label>
+
+          <label>
+            Phone
+            <input name="phone" type="tel" />
+          </label>
+
+          <label>
+            Message
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+
+          <input type="hidden" name="_subject" value="Website Inquiry - Shaansun" />
+          <div class="form-actions">
+            <button type="submit" class="btn primary">Send Message</button>
+            <button type="button" class="btn ghost" id="mail-client-btn">Send via email client</button>
+          </div>
+
+          <p class="form-note">Form responses are sent to <strong>info@shaansun.com</strong>. You can also click "Send via email client".</p>
+        </form>
+      </div>
+    </div>
+
+    <section class="map card">
+      <h3>Location</h3>
+      <iframe title="Shaansun Technologies location" src="https://www.google.com/maps?q=Yelahanka+New+Town+Bangalore&output=embed" loading="lazy"></iframe>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <h4>Shaansun Technologies</h4>
+        <p>#237, 8th Cross Road, Opp. Vijaya Bank, Yelahanka New Town, Bangalore — 560064</p>
+        <p>Email: <a href="mailto:info@shaansun.com">info@shaansun.com</a></p>
+      </div>
+      <div class="footer-right">
+        <small>© <span id="year-7"></span> Shaansun Technologies. All rights reserved.</small>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // mailto fallback button
+    document.addEventListener('DOMContentLoaded', function(){
+      const mailBtn = document.getElementById('mail-client-btn');
+      mailBtn && mailBtn.addEventListener('click', function(){
+        const f = document.getElementById('contact-form');
+        const name = encodeURIComponent(f.name.value || '');
+        const email = encodeURIComponent(f.email.value || '');
+        const phone = encodeURIComponent(f.phone.value || '');
+        const message = encodeURIComponent(f.message.value || '');
+        const subject = encodeURIComponent('Contact via Shaansun website');
+        const body = encodeURIComponent('Name: '+name+'\\nEmail: '+email+'\\nPhone: '+phone+'\\n\\nMessage:\\n'+message);
+        window.location.href = 'mailto:info@shaansun.com?subject='+subject+'&body='+body;
+      });
+    });
+  </script>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
