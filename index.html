@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHAANSUN TECHNOLOGIES - IoT & Embedded Systems Solutions</title>
+    <meta name="description" content="Leading IoT, AI, and Embedded Systems solutions provider. Custom development, training, and end-to-end IoT implementation.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066cc;
+            --secondary: #00a8e8;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --accent: #00ff88;
+            --text: #333;
+            --text-light: #666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            min-height: 90vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0,255,136,0.1) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: var(--accent);
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background: #00dd77;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,255,136,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        /* IoT Network Animation */
+        .network-animation {
+            position: relative;
+            width: 100%;
+            height: 500px;
+        }
+
+        .network-node {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(0,255,136,0.2);
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .node1 { top: 50px; left: 50px; animation-delay: 0s; }
+        .node2 { top: 150px; left: 100px; animation-delay: 0.5s; }
+        .node3 { top: 250px; left: 50px; animation-delay: 1s; }
+        .node4 { top: 200px; left: 250px; animation-delay: 1.5s; }
+        .node5 { top: 100px; left: 350px; animation-delay: 2s; }
+
+        .connection {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            transform-origin: left;
+            animation: dataFlow 2s linear infinite;
+        }
+
+        @keyframes dataFlow {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--light);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .product-card p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .product-features li {
+            padding: 0.3rem 0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .product-features li:before {
+            content: "✓ ";
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Solutions Section */
+        .solutions-section {
+            background: var(--dark);
+            color: white;
+        }
+
+        .solutions-section .section-title {
+            color: white;
+        }
+
+        .solutions-section .section-subtitle {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .solution-card {
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .solution-card:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--accent);
+        }
+
+        .solution-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        /* Training Section */
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .training-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .training-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem;
+        }
+
+        .training-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .training-duration {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .training-content {
+            padding: 2rem;
+        }
+
+        .training-content ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .training-content li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+        }
+
+        .training-content li:before {
+            content: "→ ";
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Success Stories */
+        .stories-grid {
+            display: grid;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .story-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--primary);
+        }
+
+        .story-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-card h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .story-institution {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .story-badge {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--light);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: start;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: var(--dark);
+                width: 100%;
+                padding: 2rem;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .hero-content,
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .network-animation {
+                display: none;
+            }
+
+            .solutions-grid,
+            .products-grid,
+            .training-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: var(--dark);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        .back-to-top.visible {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo">SHAANSUN<span>TECH</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#solutions">Solutions</a></li>
+                <li><a href="#training">Training</a></li>
+                <li><a href="#success">Success Stories</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text fade-in">
+                <h1>Engineering the Future of <span>Connected Intelligence</span></h1>
+                <h2>Pioneering IoT, AI, and Embedded Systems Solutions</h2>
+                <p>We design, develop, and deploy end-to-end intelligent solutions that connect devices, optimize operations, and unlock data-driven insights across industries.</p>
+                <div class="cta-buttons">
+                    <a href="#solutions" class="btn btn-primary">Explore Solutions</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Us</a>
+                    <a href="#training" class="btn btn-secondary">Training Programs</a>
+                </div>
+            </div>
+            <div class="network-animation">
+                <div class="network-node node1">Sensors</div>
+                <div class="network-node node2">MCU</div>
+                <div class="network-node node3">Gateway</div>
+                <div class="network-node node4">Network</div>
+                <div class="network-node node5">Cloud</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section>
+        <div class="container">
+            <h2 class="section-title fade-in">Core Capabilities</h2>
+            <p class="section-subtitle fade-in">Comprehensive IoT & Embedded Systems Expertise</p>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔗</div>
+                    <h3>Custom IoT Solutions</h3>
+                    <p>End-to-end design and deployment for Smart Cities, Agriculture, Healthcare, and Industry 4.0</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Embedded Systems</h3>
+                    <p>Firmware engineering, microcontroller programming, and real-time systems development</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔌</div>
+                    <h3>IoT Hardware Products</h3>
+                    <p>Development kits, sensor modules, controllers, and communication devices</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">☁️</div>
+                    <h3>Cloud Integration</h3>
+                    <p>Platform connectivity, data analytics, and dashboard development</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Professional Training</h3>
+                    <p>Industry-standard courses in IoT, Embedded Systems, PCB Design, and AI</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💡</div>
+                    <h3>Technical Consulting</h3>
+                    <p>Architecture design, proof-of-concept development, and system optimization</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">About SHAANSUN TECHNOLOGIES</h2>
+            <p class="section-subtitle fade-in">Engineering Excellence in Connected Systems</p>
+            <div class="about-grid">
+                <div class="fade-in">
+                    <div style="background: linear-gradient(135deg, #0066cc, #00a8e8); height: 400px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem;">🚀</div>
+                </div>
+                <div class="fade-in">
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem; color: var(--dark);">Who We Are</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-light);">SHAANSUN TECHNOLOGIES stands at the intersection of hardware innovation and software intelligence. We deliver comprehensive IoT and embedded systems solutions that transform industries.</p>
+                    <p style="margin-bottom: 1.5rem; color: var(--text-light);">Our expertise spans the complete IoT value chain—from sensor-level hardware design and microcontroller firmware development to cloud platform integration and AI-powered analytics.</p>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-number">500+</div>
+                            <div>Students Trained</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">50+</div>
+                            <div>Projects Delivered</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">20+</div>
+                            <div>Institutional Partners</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-number">12</div>
+                            <div>Industry Solutions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products">
+        <div class="container">
+            <h2 class="section-title fade-in">IoT Products & Hardware</h2>
+            <p class="section-subtitle fade-in">Professional-Grade Development Kits & Components</p>
+            <div class="products-grid">
+                <div class="product-card fade-in">
+                    <div class="product-image">🤖</div>
+                    <div class="product-content">
+                        <h3>AI Vision Kit</h3>
+                        <p>Edge AI platform for computer vision and TensorFlow Lite deployment.</p>
+                        <ul class="product-features">
+                            <li>ESP32-CAM module</li>
+                            <li>TensorFlow Lite support</li>
+                            <li>OLED display</li>
+                            <li>Sample ML models</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Inquire Now</a>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-image">🌡️</div>
+                    <div class="product-content">
+                        <h3>Sensor Modules</h3>
+                        <p>Comprehensive range of environmental, industrial, and agricultural sensors.</p>
+                        <ul class="product-features">
+                            <li>Temperature & Humidity</li>
+                            <li>Air Quality sensors</li>
+                            <li>Soil moisture probes</li>
+                            <li>Industrial-grade accuracy</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Inquire Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions-section" id="solutions">
+        <div class="container">
+            <h2 class="section-title fade-in">Industry Solutions</h2>
+            <p class="section-subtitle fade-in">Transforming Industries Through Connected Intelligence</p>
+            <div class="solutions-grid">
+                <div class="solution-card fade-in">
+                    <h3>🏙️ Smart City</h3>
+                    <p>Intelligent traffic management, street lighting, environmental monitoring, and public safety systems for modern urban infrastructure.</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Technologies: LoRaWAN, NB-IoT, Edge Computing, AI Analytics</p>
+                </div>
+                <div class="solution-card fade-in">
+                    <h3>🌾 Smart Agriculture</h3>
+                    <p>Precision farming with soil monitoring, automated irrigation, weather stations, and crop health analytics for optimized yields.</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Technologies: LoRa Sensors, Solar Power, ML Predictions</p>
+                </div>
+                <div class="solution-card fade-in">
+                    <h3>🌍 Environmental Monitoring</h3>
+                    <p>Real-time air quality, water quality, noise pollution tracking with automated compliance reporting and predictive analytics.</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Technologies: Certified Sensors, GIS Integration, Cloud Analytics</p>
+                </div>
+                <div class="solution-card fade-in">
+                    <h3>🏥 Smart Healthcare</h3>
+                    <p>Patient monitoring, asset tracking, environmental controls, and telemedicine platforms with HIPAA compliance.</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Technologies: BLE Wearables, RTLS, Secure Cloud Platforms</p>
+                </div>
+                <div class="solution-card fade-in">
+                    <h3>⛏️ Mining & Automation</h3>
+                    <p>Worker safety monitoring, equipment health tracking, gas detection, and predictive maintenance for mining operations.</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Technologies: Intrinsically Safe Sensors, SCADA Integration</p>
+                </div>
+                <div class="solution-card fade-in">
+                    <h3>🗑️ Smart Waste Management</h3>
+                    <p>Real-time bin monitoring, route optimization, and fleet tracking for efficient municipal waste collection.</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Technologies: NB-IoT Sensors, AI Route Optimization</p>
+                </div>
+                <div class="solution-card fade-in">
+                    <h3>🚚 Logistics & Fleet</h3>
+                    <p>GPS tracking, driver behavior monitoring, fuel management, and cold chain monitoring for transportation fleets.</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Technologies: GPS/LTE, OBD-II, Temperature Sensors</p>
+                </div>
+                <div class="solution-card fade-in">
+                    <h3>📍 Asset Tracking</h3>
+                    <p>Indoor positioning, GPS tracking, and utilization analytics for equipment and valuable asset management.</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Technologies: BLE Beacons, UWB, RFID Systems</p>
+                </div>
+                <div class="solution-card fade-in">
+                    <h3>🛢️ Oil & Gas IoT</h3>
+                    <p>Pipeline monitoring, leak detection, tank level tracking, and corrosion monitoring for energy infrastructure.</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Technologies: Explosion-Proof Sensors, Satellite Connectivity</p>
+                </div>
+                <div class="solution-card fade-in">
+                    <h3>🏭 Industry 4.0</h3>
+                    <p>Smart factory solutions with machine connectivity, predictive maintenance, and production optimization.</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Technologies: OPC-UA, Digital Twins, AI/ML Analytics</p>
+                </div>
+                <div class="solution-card fade-in">
+                    <h3>🏢 Smart Buildings</h3>
+                    <p>HVAC automation, energy monitoring, access control, and occupancy-based optimization for commercial buildings.</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Technologies: BACnet, Zigbee, ML-Based Scheduling</p>
+                </div>
+                <div class="solution-card fade-in">
+                    <h3>💧 Water Management</h3>
+                    <p>Distribution monitoring, leak detection, water quality tracking, and smart metering for utilities.</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Technologies: NB-IoT Meters, Acoustic Sensors, SCADA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Section -->
+    <section id="training">
+        <div class="container">
+            <h2 class="section-title fade-in">Professional Training Programs</h2>
+            <p class="section-subtitle fade-in">Industry-Aligned Courses by Practicing Engineers</p>
+            <div class="training-grid">
+                <div class="training-card fade-in">
+                    <div class="training-header">
+                        <h3>IoT & Embedded Systems</h3>
+                        <div class="training-duration">⏱️ 60-80 hours</div>
+                    </div>
+                    <div class="training-content">
+                        <ul>
+                            <li>Microcontroller Programming</li>
+                            <li>Sensor Integration</li>
+                            <li>Wireless Protocols</li>
+                            <li>RTOS Development</li>
+                            <li>Cloud IoT Integration</li>
+                            <li>Complete Project Build</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Enroll Now</a>
+                    </div>
+                </div>
+                <div class="training-card fade-in">
+                    <div class="training-header">
+                        <h3>PCB Design & Hardware</h3>
+                        <div class="training-duration">⏱️ 40-50 hours</div>
+                    </div>
+                    <div class="training-content">
+                        <ul>
+                            <li>Schematic Capture</li>
+                            <li>PCB Layout Techniques</li>
+                            <li>Multi-layer Design</li>
+                            <li>Signal Integrity</li>
+                            <li>Design for Manufacturing</li>
+                            <li>Prototype Testing</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Enroll Now</a>
+                    </div>
+                </div>
+                <div class="training-card fade-in">
+                    <div class="training-header">
+                        <h3>Python & AI Fundamentals</h3>
+                        <div class="training-duration">⏱️ 50-60 hours</div>
+                    </div>
+                    <div class="training-content">
+                        <ul>
+                            <li>Python Programming</li>
+                            <li>Data Analysis with Pandas</li>
+                            <li>Machine Learning Basics</li>
+                            <li>TensorFlow & Keras</li>
+                            <li>Edge AI Deployment</li>
+                            <li>IoT Data Pipelines</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Enroll Now</a>
+                    </div>
+                </div>
+                <div class="training-card fade-in">
+                    <div class="training-header">
+                        <h3>Cloud IoT Platforms</h3>
+                        <div class="training-duration">⏱️ 30-40 hours</div>
+                    </div>
+                    <div class="training-content">
+                        <ul>
+                            <li>AWS IoT Core</li>
+                            <li>Azure IoT Hub</li>
+                            <li>ThingsBoard Platform</li>
+                            <li>Dashboard Development</li>
+                            <li>Data Analytics Pipelines</li>
+                            <li>OTA Updates</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Enroll Now</a>
+                    </div>
+                </div>
+                <div class="training-card fade-in">
+                    <div class="training-header">
+                        <h3>Industrial Automation</h3>
+                        <div class="training-duration">⏱️ 40-50 hours</div>
+                    </div>
+                    <div class="training-content">
+                        <ul>
+                            <li>PLC Programming</li>
+                            <li>SCADA Systems</li>
+                            <li>Industrial Protocols</li>
+                            <li>Motor Control</li>
+                            <li>Safety Systems</li>
+                            <li>IoT Integration</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Enroll Now</a>
+                    </div>
+                </div>
+                <div class="training-card fade-in">
+                    <div class="training-header">
+                        <h3>Custom Corporate Training</h3>
+                        <div class="training-duration">⏱️ Flexible Duration</div>
+                    </div>
+                    <div class="training-content">
+                        <ul>
+                            <li>On-site Workshops</li>
+                            <li>Customized Curriculum</li>
+                            <li>Team Upskilling</li>
+                            <li>Hands-on Labs</li>
+                            <li>Project-Based Learning</li>
+                            <li>Post-Training Support</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Request Quote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="about-section" id="success">
+        <div class="container">
+            <h2 class="section-title fade-in">Success Stories</h2>
+            <p class="section-subtitle fade-in">Empowering Education Through Practical Training</p>
+            <div class="stories-grid">
+                <div class="story-card fade-in">
+                    <div class="story-header">
+                        <div>
+                            <h3>Two-Day IoT Bootcamp</h3>
+                            <div class="story-institution">Kings College of Engineering, Trichy</div>
+                        </div>
+                        <div class="story-badge">COMPLETED</div>
+                    </div>
+                    <p style="color: var(--text-light); margin-bottom: 1rem;">Intensive hands-on bootcamp covering ESP32 programming, sensor integration, WiFi communication, and cloud platform connectivity. Students built complete weather monitoring IoT projects.</p>
+                    <div style="background: var(--light); padding: 1rem; border-radius: 5px;">
+                        <strong>Impact:</strong> Students gained practical IoT development skills, sparked interest in embedded systems careers, and initiated multiple final year projects.
+                    </div>
+                </div>
+                <div class="story-card fade-in">
+                    <div class="story-header">
+                        <div>
+                            <h3>5-Day ICTACT FDP on PCB Design</h3>
+                            <div class="story-institution">Annamalai Polytechnic College, Chettinad</div>
+                        </div>
+                        <div class="story-badge">COMPLETED</div>
+                    </div>
+                    <p style="color: var(--text-light); margin-bottom: 1rem;">Comprehensive Faculty Development Program covering professional PCB design tools, multi-layer layouts, signal integrity, and manufacturing processes using Altium Designer/KiCad.</p>
+                    <div style="background: var(--light); padding: 1rem; border-radius: 5px;">
+                        <strong>Impact:</strong> Faculty developed capability to guide students in professional PCB design, established PCB labs, and initiated research collaborations.
+                    </div>
+                </div>
+                <div class="story-card fade-in">
+                    <div class="story-header">
+                        <div>
+                            <h3>Guest Lecture Series</h3>
+                            <div class="story-institution">KPR Institute of Engineering & Technology, Coimbatore</div>
+                        </div>
+                        <div class="story-badge">COMPLETED</div>
+                    </div>
+                    <p style="color: var(--text-light); margin-bottom: 1rem;">Expert lectures on embedded systems evolution, IoT applications, industry trends, emerging technologies, and career pathways with live demonstrations and Q&A sessions.</p>
+                    <div style="background: var(--light); padding: 1rem; border-radius: 5px;">
+                        <strong>Impact:</strong> Inspired students toward embedded systems specialization, guided final year project selection, and motivated pursuit of IoT careers.
+                    </div>
+                </div>
+                <div class="story-card fade-in">
+                    <div class="story-header">
+                        <div>
+                            <h3>One-Credit Course on VLSI Design</h3>
+                            <div class="story-institution">Kongu Engineering College</div>
+                        </div>
+                        <div class="story-badge">COMPLETED</div>
+                    </div>
+                    <p style="color: var(--text-light); margin-bottom: 1rem;">Semester-long elective covering Verilog HDL programming, digital circuit design, FPGA prototyping, and ASIC design flow with hands-on implementation projects.</p>
+                    <div style="background: var(--light); padding: 1rem; border-radius: 5px;">
+                        <strong>Impact:</strong> Students acquired VLSI design fundamentals, prepared for semiconductor careers, and completed FPGA-based final year projects.
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <div style="display: inline-grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                    <div>
+                        <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary);">500+</div>
+                        <div style="color: var(--text-light);">Students Trained</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary);">50+</div>
+                        <div style="color: var(--text-light);">Faculty Members</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary);">20+</div>
+                        <div style="color: var(--text-light);">Institutions</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary);">95%</div>
+                        <div style="color: var(--text-light);">Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <p class="section-subtitle fade-in">Let's Build Something Innovative Together</p>
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--dark);">Contact Information</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Office Address</strong><br>
+                            #237, 8th Cross Road<br>
+                            Opposite Vijaya Bank<br>
+                            Yelahanka New Town<br>
+                            Bangalore – 560064<br>
+                            Karnataka, India
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <strong>Email</strong><br>
+                            info@shaansun.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <strong>Business Hours</strong><br>
+                            Monday - Friday: 9:00 AM - 6:00 PM<br>
+                            Saturday: 10:00 AM - 4:00 PM<br>
+                            Sunday: Closed
+                        </div>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <h4 style="margin-bottom: 1rem;">Why Choose Us?</h4>
+                        <ul style="list-style: none; color: var(--text-light);">
+                            <li style="padding: 0.5rem 0;">✓ End-to-End Solution Delivery</li>
+                            <li style="padding: 0.5rem 0;">✓ Industry-Specific Expertise</li>
+                            <li style="padding: 0.5rem 0;">✓ Proven Track Record</li>
+                            <li style="padding: 0.5rem 0;">✓ Post-Deployment Support</li>
+                            <li style="padding: 0.5rem 0;">✓ Training & Knowledge Transfer</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="contact-form fade-in">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--dark);">Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Inquiry Type *</label>
+                            <select name="inquiry_type" required>
+                                <option value="">Select Type</option>
+                                <option value="iot">IoT Solution Development</option>
+                                <option value="embedded">Embedded Systems Design</option>
+                                <option value="product">Product Development</option>
+                                <option value="training">Training & Workshops</option>
+                                <option value="consulting">Technical Consulting</option>
+                                <option value="partnership">Partnership Opportunities</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Message *</label>
+                            <textarea name="message" required placeholder="Please describe your requirements in detail..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>SHAANSUN TECHNOLOGIES</h3>
+                <p style="color: rgba(255,255,255,0.7); margin-top: 1rem;">Engineering the future of connected intelligence through innovative IoT, AI, and embedded systems solutions.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#solutions">Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#training">Training Programs</a></li>
+                    <li><a href="#success">Success Stories</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#contact">Request Quote</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:info@shaansun.com">Email: info@shaansun.com</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">YouTube</a></li>
+                    <li><a href="#">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SHAANSUN TECHNOLOGIES. All Rights Reserved. | Engineering Tomorrow's Connected World</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">↑</button>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            // Show success message
+            alert('Thank you for your inquiry! We will get back to you within 24 hours.');
+            
+            // Reset form
+            contactForm.reset();
+            
+            // In a real implementation, you would send this data to a server
+            console.log('Form submitted:', data);
+        });
+
+        // Add active state to navigation on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>-image">📱</div>
+                    <div class="product-content">
+                        <h3>ESP32 Development Kit</h3>
+                        <p>Complete WiFi + Bluetooth enabled starter kit with sensors and comprehensive documentation.</p>
+                        <ul class="product-features">
+                            <li>Dual-core processor</li>
+                            <li>WiFi & BLE integrated</li>
+                            <li>Complete sensor suite</li>
+                            <li>Example firmware included</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Inquire Now</a>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-image">🔧</div>
+                    <div class="product-content">
+                        <h3>STM32 Professional Kit</h3>
+                        <p>ARM Cortex-M development platform for industrial-grade embedded systems.</p>
+                        <ul class="product-features">
+                            <li>STM32F4 series MCU</li>
+                            <li>Debugger interface</li>
+                            <li>LCD display module</li>
+                            <li>Industrial sensors</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Inquire Now</a>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-image">📡</div>
+                    <div class="product-content">
+                        <h3>LoRa Node Kit</h3>
+                        <p>Long-range wireless communication kit with 10+ km range capability.</p>
+                        <ul class="product-features">
+                            <li>SX1278 LoRa module</li>
+                            <li>10+ km range</li>
+                            <li>Battery powered</li>
+                            <li>Network integration</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Inquire Now</a>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-image">🌐</div>
+                    <div class="product-content">
+                        <h3>LoRaWAN Gateway Kit</h3>
+                        <p>Complete gateway solution for deploying LoRaWAN networks.</p>
+                        <ul class="product-features">
+                            <li>8-channel concentrator</li>
+                            <li>Weatherproof enclosure</li>
+                            <li>Cloud connectivity</li>
+                            <li>Pre-configured software</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Inquire Now</a>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product
